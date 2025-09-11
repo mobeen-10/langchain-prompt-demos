@@ -1,6 +1,6 @@
 from helpers import (get_llm, get_response)
 
-llm = get_llm("openai/gpt-5-nano")
+llm = get_llm()
 
 def demo_sensitivity_to_phrasing():
     
@@ -23,15 +23,16 @@ File: /app/user_processor.py, line 23, in process_user
 
 CONTEXT:
 - Function: process_user(user_data: dict) -> dict
-- Input data: {"name": "John", "age": 30}  # Missing 'email' field
+- Input user_data: {"name": "John", "age": 30}
 - Expected: Extract email, name, age from user_data
 - Current behavior: Crashes when 'email' key is missing
 
 REQUIREMENTS:
-1. Handle missing keys gracefully
-2. Provide fallback values
-3. Log warnings for missing data
-4. Return processed user dict
+1. Why is it crashing?
+2. Handle missing keys gracefully
+3. Provide fallback values
+4. Log warnings for missing data
+5. Return processed user dict
 
 Please provide a complete solution with error handling."""
     print(f"\nPrompt 3: '{prompt3}'")

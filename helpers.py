@@ -19,7 +19,7 @@ def get_llm(model_name="openai/gpt-4.1-nano"):
 def get_response(llm, prompt):
     try:
         response = llm.invoke(prompt)
-        print(f"Response: {response.content}")
+        print(f"Response: \n\n{response.content} \n")
         return response.content
     except Exception as e:
         print(f"Error: {e}")

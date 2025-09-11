@@ -1,10 +1,10 @@
 from helpers import (get_llm, get_response, get_response_with_system)
 
-# Initialize the LLM
 llm = get_llm()
 
 def demo_shot_prompting():
-
+    # can trigger
+    # llm = get_llm("meta-llama/llama-3.3-8b-instruct:free")
     task = "Classify the sentiment of this text: 'I absolutely love this new restaurant!'"
 
     zero_shot_prompt = f"Task: {task}"
@@ -51,12 +51,11 @@ def demo_shot_prompting():
 
 def demo_chain_of_thought():
     tricky_problem = "Count how many times the letter 'r' appears in the word 'strawberries'."
-    test_llm = get_llm()
     
     # Without Chain-of-Thought
     print("🔸 WITHOUT Chain-of-Thought (Direct Answer)")
     direct_prompt = f"{tricky_problem}"
-    get_response(test_llm, direct_prompt)
+    get_response(llm, direct_prompt)
     
     # With Chain-of-Thought
     print("\n🔸 WITH Chain-of-Thought (Step-by-Step)")
@@ -75,31 +74,37 @@ Let's work through this systematically:
 
 Step-by-step solution:
 """
-    get_response(test_llm, cot_prompt)
+    get_response(llm, cot_prompt)
 
 
 def demo_role_based_prompting():
+    topic = "the impact of remote work on team productivity in 3 bullet points each max 50 words"
     
-    topic = "the impact of remote work on team productivity"
-    
-
     generic_prompt = f"Write about {topic}."
     get_response(llm, generic_prompt)
-    
+    print(("\n" + "-"*60))
+    print("\n")
+
     # WITH ROLE - HR Director
     hr_system = "You are an experienced HR Director with 12 years of experience in employee engagement, organizational culture, and talent retention. You focus on people-first approaches and employee wellbeing."
-    hr_user = f"Analyze {topic}, focusing on employee engagement, team culture, work-life balance, and retention strategies."
+    hr_user = f"Analyze {topic}, focusing on employee engagement, team culture, work-life balance, and retention strategies. in 3 bullet points,"
+    print("="*60)
     print(f"System: '{hr_system}'")
     print(f"User: '{hr_user}'")
+    print("="*60)
+    print("\n")
     get_response_with_system(llm, hr_system, hr_user)
-    print("\n" + "-"*60)
+    print("\n")
     # WITH ROLE - TPM
     tpm_system = "You are an experienced Technical Program Manager with 8 years of experience in cross-functional coordination, project delivery, and process optimization. You focus on timeline management, stakeholder alignment, and delivery excellence."
     tpm_user = f"Analyze {topic}, focusing on project delivery, cross-team collaboration, process efficiency, and timeline management."
+    print("="*60)
     print(f"System: '{tpm_system}'")
     print(f"User: '{tpm_user}'")
+    print("="*60)
+    print("\n")
     get_response_with_system(llm, tpm_system, tpm_user)
-    
+    print("\n")
 
 def run_strategies_demo():
     try:
