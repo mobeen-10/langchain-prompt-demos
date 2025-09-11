@@ -1,0 +1,17 @@
+# Environment files
+.env
+env/
+
+# IDE and editor files
+.vscode/
+
+# Cache folders
+cache/
+__pycache__/
+
+# Project folders
+others/
+pdfs/*
+
+# macOS system files
+.DS_Store
