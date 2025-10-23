@@ -10,7 +10,7 @@ gpt_3 = "openai/gpt-3.5-turbo"
 def which_model():
     prompt = "Which model are you? Please tell me your model name. Give an anwer: GPT 3, GPT 4 or GPT 5 - no extra info or text. Be Precise, do not hallucinate or make up information."
     try:
-        get_response(get_llm(gpt_5), prompt)
+        get_response(get_llm(gpt_3), prompt)
     except Exception as e:
         print(e)
 

@@ -108,9 +108,9 @@ def demo_role_based_prompting():
 
 def run_strategies_demo():
     try:
-        demo_shot_prompting()
+        # demo_shot_prompting()
         print("\n" + "-"*60)
-        demo_chain_of_thought()
+        # demo_chain_of_thought()
         print("\n" + "-"*60)
         demo_role_based_prompting()
 
