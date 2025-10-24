@@ -49,8 +49,11 @@ def create_react_agent_demo():
     """Create a ReAct agent for demonstration"""
     llm = get_llm(model_name="openai/gpt-4o", temperature=0.0)
     prompt = get_react_prompt()
-    
-    agent = create_react_agent(llm, tools, prompt)
+
+    # needs tool metadata for selection and prompt construction.
+    agent = create_react_agent(llm, tools, prompt) 
+
+    # executor needs the actual tool functions to run and manage the Thought → Action → Observation loop.
     agent_executor = AgentExecutor(
         agent=agent,
         tools=tools,
