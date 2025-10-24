@@ -1,5 +1,3 @@
-"""ReAct Deep Dive - Clean Code Examples"""
-
 from langchain.agents import AgentExecutor, create_react_agent
 from langchain_core.tools import Tool
 from helpers import get_llm
